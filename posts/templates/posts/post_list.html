@@ -1,0 +1,14 @@
+{% include 'base.html' %}
+
+{% block content %}
+    <div class="center-column">
+        <h1><a href="{% url 'posts:new' %}"> Create a new post </a><br/></h1>
+        {% for post in object_list %}
+
+            <strong>{{ post.author.username }}</strong><br/>
+            <img src="{{ post.image.url }}" width=400 height=400>
+            <p><em>{{ post.created }}</em><br/>{{ post.description }}</p>
+            <a href='{{ post.get_absolute_url }}'> Detail </a><br/>
+    {% endfor %}
+    </div>
+{% endblock %}
